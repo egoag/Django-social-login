@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head_block %}
+
+<link href="http://static.xiachufang.com/css/2013/base.d706c3c6.compress.css" rel="stylesheet" type="text/css">
+<link href="http://static.xiachufang.com/css/2013/other.0b3c792c.compress.css" rel="stylesheet" type="text/css">
+
+{% endblock %}
+
+{% block title %}授权失败{% endblock %}
+
+{% block body_block %}
+
+<div class="p40 has-top-border has-bottom-border">
+  <div class="page-title align-center pb40">授权失败</div>
+  <div class="font14">
+    <div class="social-login-box pb40 mb40">
+      <div class="mb15">你取消了授权</div>
+      <div class="mb15"><span id='second'>2</span>秒后返回主页</div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<script language="javascript" type="text/javascript">
+        var i = 2;
+        var intervalid;
+        intervalid = setInterval("fun()", 1000);
+        function fun() {
+            if (i == 0) {
+                window.location.href = "/";
+                clearInterval(intervalid);
+            }
+            document.getElementById("second").innerHTML = i;
+            i--; 
+        }
+</script>
+{% endblock %}

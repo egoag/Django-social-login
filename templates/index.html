@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head_block %}
+
+<link href="http://static.xiachufang.com/css/2013/base.d706c3c6.compress.css" rel="stylesheet" type="text/css">
+<link href="http://static.xiachufang.com/css/2013/other.0b3c792c.compress.css" rel="stylesheet" type="text/css">
+
+{% endblock %}
+
+{% block title %}DEMO主页{% endblock %}
+
+{% block body_block %}
+
+    <div class="jumbotron">
+        <h2><?php echo $site_name; ?></h2>
+        <p class="lead">这是一个Demo主页</p>
+        <p><a class="btn btn-lg btn-success" href="{% url 'login'%}" role="button">用第三方登录</a></p>
+    </div>
+
+{% endblock %}
