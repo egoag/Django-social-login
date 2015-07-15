@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block head_block %}
+    <link href="{% static 'css/third.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}登陆DEMO{% endblock %}
+
+{% block body_block %}
+
+    <div class="container">
+        <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <h1 class="lead">{{page_title}}</h1>
+            <br>
+
+            <div>
+                <p>
+                    <img src="{% static 'pic/social/douban.png' %}">
+                    <span style="line-height:46px;">
+                        {% if not user.third.bind_douban%}
+                            <a class="btn " href="{% url 'third_login'%}?type=douban" role="button">绑定账号</a>
+                        {% else %}
+                            <span>豆瓣已绑定</span>
+                        {% if not user.third.bind_weibo and not user.third.bind_qq %}
+                            <a hclass="btn btn-lg btn-success" href="{% url 'third_cancel_auth' %}?type=douban" role="button"
+                                onclick="return confirm('这是最后的账号，确定解绑并删除账号吗？');" >
+                                取消绑定</a>
+                        {% else %}
+                            <a hclass="btn btn-lg btn-success" href="{% url 'third_cancel_auth' %}?type=douban" role="button">取消绑定</a>
+                        {% endif %}
+                        {% endif %}
+                    </span>
+                </p>
+            </div>
+
+            <div>
+                <p>
+                    <img src="{% static 'pic/social/weibo.png' %}">
+                    <span style="line-height:46px;">
+                        {% if not user.third.bind_weibo%}
+                            <a class="btn " href="{% url 'third_login'%}?type=weibo" role="button">绑定账号</a>
+                        {% else %}
+                            <span>微博已绑定</span>
+                        {% if not user.third.bind_douban and not user.third.bind_qq %}
+                            <a hclass="btn btn-lg btn-success" href="{% url 'third_cancel_auth' %}?type=weibo" role="button"
+                                onclick="return confirm('这是最后的账号，确定解绑并删除账号吗？');" >
+                                取消绑定</a>
+                        {% else %}
+                            <a hclass="btn btn-lg btn-success" href="{% url 'third_cancel_auth' %}?type=weibo" role="button">取消绑定</a>
+                        {% endif %}
+                        {% endif %}
+                    </span>
+                </p>
+            </div>
+
+            <div>
+                <p>
+                    <img src="{% static 'pic/social/qq.png' %}">
+                    <span style="line-height:46px;">
+                        {% if not user.third.bind_qq%}
+                            <a class="btn " href="{% url 'third_login'%}?type=qq" role="button">绑定账号</a>
+                        {% else %}
+                            <span>QQ已绑定</span>
+                        {% if not user.third.bind_douban and not user.third.bind_weibo %}
+                            <a hclass="btn btn-lg btn-success" href="{% url 'third_cancel_auth' %}?type=qq" role="button"
+                                onclick="return confirm('这是最后的账号，确定解绑并删除账号吗？');" >
+                                取消绑定</a>
+                        {% else %}
+                            <a hclass="btn btn-lg btn-success" href="{% url 'third_cancel_auth' %}?type=qq" role="button">取消绑定</a>
+                        {% endif %}
+                        {% endif %}
+                    </span>
+                </p>
+            </div>
+
+            {% if msg %}
+                <div class="alert alert-success" role="alert">{{ msg }}</div>
+            {% endif %}
+        </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
